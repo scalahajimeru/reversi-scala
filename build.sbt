@@ -1,4 +1,4 @@
-name := "othello"
+name := "reversi-scala"
 
 version := "1.0"
 
