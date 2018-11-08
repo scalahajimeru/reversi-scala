@@ -1,4 +1,4 @@
-package othello.model
+package reversi.model
 
 // immutable
 case class CellPos(row: Int, col: Int) {

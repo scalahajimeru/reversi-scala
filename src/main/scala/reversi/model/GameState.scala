@@ -1,6 +1,4 @@
-package othello.model
-
-import othello.model.Board.CellsOps
+package reversi.model
 
 import scala.collection.immutable.SortedMap
 

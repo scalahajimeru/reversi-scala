@@ -1,7 +1,7 @@
-package othello.view
+package reversi.view
 
-import othello.model.{Board, CellState, GameState, Turn}
-import othello.model.Board.CellsOps
+import reversi.model.{Board, CellState, GameState, Turn}
+import reversi.model.Board.CellsOps
 
 import scala.collection.immutable.SortedMap
 

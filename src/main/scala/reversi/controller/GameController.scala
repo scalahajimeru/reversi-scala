@@ -1,19 +1,19 @@
-package othello.controller
+package reversi.controller
 
 import java.io.IOException
 
-import othello.model.Board.CellsOps
-import othello.model.GameState._
-import othello.model._
-import othello.view.GameView
+import reversi.model.Board.CellsOps
+import reversi.model.GameState._
+import reversi.model._
+import reversi.view.GameView
 
 import scala.io.StdIn
 
-class GameController(gamestateFileName: String) {
+class GameController() {
 
   def run(): Unit = {
     def mainLoop(state: GameState): Unit = {
-      print("Othello>")
+      print("Reversi>")
       val line: String = try {
         StdIn.readLine
       } catch {
@@ -38,6 +38,7 @@ class GameController(gamestateFileName: String) {
       }
     }
 
+    println("help でヘルプメッセージを出力します。")
     mainLoop(GameState())
   }
 

@@ -1,4 +1,4 @@
-package othello.model
+package reversi.model
 
 import scala.collection.immutable.{SortedMap, TreeMap}
 

@@ -1,4 +1,4 @@
-package othello.model
+package reversi.model
 
 sealed trait CellState {
   def displayString: String = this match {
