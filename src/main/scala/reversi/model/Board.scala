@@ -35,6 +35,10 @@ object Board {
   // 盤面の範囲内か確認
   def isInRange(row: Int, col: Int): Boolean = !(row < 1 || 8 < row || col < 1 || 8 < col)
 
+  /**
+    * 盤面表現(SortedMap[(Int, Int), CellState])の拡張クラス
+    * @param src 拡張元の盤面表現
+    */
   implicit class CellsOps(src: SortedMap[(Int, Int), CellState] ) {
 
     def setCell(row: Int, col: Int, cellState: CellState): SortedMap[(Int, Int), CellState] = src + ((row, col) -> cellState)
