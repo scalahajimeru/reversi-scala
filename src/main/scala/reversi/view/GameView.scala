@@ -23,7 +23,7 @@ object GameView {
     cells.foreach{
       case ((_, _), CellState.Outer) => Unit
       case ((row, 1), cellState) => print(row + " |" + cellState.displayString)
-      case ((row, 8), cellState) => println("|" + cellState.displayString + s"|$row\n" +
+      case ((row, 8), cellState) => println("|" + cellState.displayString + s"| $row\n" +
         "  +--+--+--+--+--+--+--+--+")
       case ((_, _), cellState) => print("|" + cellState.displayString)
     }
