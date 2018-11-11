@@ -2,7 +2,6 @@ package reversi.controller
 
 import java.io.IOException
 
-import reversi.model.Board.CellsOps
 import reversi.model.GameState._
 import reversi.model._
 import reversi.view.GameView
@@ -91,7 +90,7 @@ class GameController() {
       Left("盤面の範囲外です。")
 
     // 既に置いてあるか確認
-    def isBlank(row: Int, col: Int): Either[String, Unit] = if (state.cells.exists {
+    def isBlank(row: Int, col: Int): Either[String, Unit] = if (state.board.cells.exists {
       case ((`row`, `col`), CellState.Blank) => true
       case _ => false
     }) Right(Unit) else Left("既に石が置かれています。")
@@ -106,7 +105,7 @@ class GameController() {
     // に合致すればループを終了する。
     // 同じ色の石が見つかったときのみ、異なる色の石を反転させる。
     def selectFlippableCells(row: Int, col: Int, cellState: CellState): Either[String, Seq[CellPos]] = {
-      val flipCells = state.cells.selectFlippableCells(CellPos(row, col), disk)
+      val flipCells = state.board.selectFlippableCells(CellPos(row, col), disk)
 
       // 反転する石があるか？
       if (flipCells.nonEmpty) {
@@ -118,21 +117,21 @@ class GameController() {
     }
 
     def doFlip(row: Int, col: Int, flipCells: Seq[CellPos]): GameState = {
-      val flippedCells = state.cells
+      val flippedCells = state.board
         .setCell(row, col, disk) // 石を置いて
         .flip(flipCells) // ひっくり返す
       state
         .copy(
-          cells = flippedCells,
+          board = flippedCells,
           moveCount = state.moveCount + 1)
     }
 
     def evalGameContinue(state: GameState): GameState = {
       // ゲーム終了か調べる
-      val state2 = if (state.cells.hasBlankCell) { // BlankCellがあればゲーム継続
+      val state2 = if (state.board.hasBlankCell) { // BlankCellがあればゲーム継続
         state.switchTurn()
       } else { // BlankCellがなければゲーム終了
-        println((if (state.cells.countDarkDisks > 32) "黒"
+        println((if (state.board.countDarkDisks > 32) "黒"
         else "白") + "の勝ち")
         state.copy(gameover = true)
       }

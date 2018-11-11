@@ -9,12 +9,12 @@ object GameState {
 
 /**
   * ゲームの状態管理を行います。
-  * @param cells 盤面の状態
+  * @param board 盤面の状態
   * @param turn 現在手を打とうとしているプレイヤー
   * @param moveCount 現在の手数
   * @param gameover ゲームオーバーになっているか。
   */
-case class GameState(cells: SortedMap[(Int, Int), CellState] = Board.initialize(),
+case class GameState(board: Board = Board(),
                      turn: Turn = Turn.Dark,
                      moveCount: Int = 1,
                      gameover: Boolean = false) {
